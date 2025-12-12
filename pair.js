@@ -57,7 +57,7 @@ const config = {
     AUTO_LIKE_STATUS: 'true',
     AUTO_RECORDING: 'true',
     AUTO_LIKE_EMOJI: ['💗', '🔥'],
-    BUTTON: 'true',
+    BUTTON: 'false',
 
     // Newsletter Auto-React Settings
     AUTO_REACT_NEWSLETTERS: 'true',
