@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^20.0.2",
-    "@whiskeysockets/baileys": "npm:@fuxxy-star/baileys@^6.0.5",
+    "@whiskeysockets/baileys": "latest",
     "express-session": "^1.18.2",
     "adm-zip": "^0.5.16",
     "axios": "^1.2.5",
