@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DEW-MD Bot Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Base */
+  * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
+  body { margin: 0; padding: 0; background: #121212; color: #e0e0e0; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 2rem; }
+
+  /* Card */
+  .card {
+    background: #1c1c1c;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 0 20px #00ffea22;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 0 50px #00ffeaaa; }
+
+  h2 {
+    text-align: center;
+    font-weight: 900;
+    color: #00ffea;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px #00ffea88;
+  }
+
+  label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
+  input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-radius: 10px; background: #2a2a2a; color: #fff; }
+  input::placeholder { color: #a0a0a0; }
+  select { cursor: pointer; }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: transparent;
+    border: 2px solid #00ffea;
+    border-radius: 30px;
+    color: #00ffea;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #00ffea55;
+  }
+  button:hover { background: #00ffea; color: #121212; box-shadow: 0 0 30px #00ffea; }
+
+  /* Emoji picker */
+  .emoji-picker {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    background: #2a2a2a;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .emoji-picker span {
+    font-size: 22px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .emoji-picker span.selected { background: #00ffea; color: #121212; }
+
+  .emoji-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .emoji-item { background: #00ffea33; padding: 5px 8px; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; }
+  .emoji-item:hover { background: #00ffea; color: #121212; }
+
+  /* Save message */
+  #saveMsg { text-align: center; margin-top: 10px; font-weight: 600; color: #22c55e; }
+
+  /* Responsive */
+  @media (max-width: 500px) {
+    .card { padding: 1.5rem; }
+    .emoji-picker { grid-template-columns: repeat(5, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="card" id="settingsCard">
+  <h2>Bot Settings</h2>
+
+  <label>Prefix</label>
+  <input id="prefix" type="text" placeholder=".">
+
+  <label>Buttons</label>
+  <select id="button">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select>
+
+  <label>Auto View Status</label>
+  <select id="autoView">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select>
+
+  <label>Auto Like Status</label>
+  <select id="autoLikeStatus">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select>
+
+  <label>Auto Recording</label>
+  <select id="autoRecording">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select>
+
+  <label>Auto Like Emojis</label>
+  <div class="emoji-picker" id="emojiPicker">😀 💚 😂 😍 😎 🤔 🥳 🔥 👍 🙏 ❤️ 😁 🖤 🥰 🍕 🎉 🌟 😭 🤯 🤍 🤖</div>
+  <div class="emoji-list" id="emojiList"></div>
+  <input id="newEmoji" type="text" placeholder="Add emoji">
+
+  <button onclick="saveSettings()">💾 Save Settings</button>
+  <p id="saveMsg"></p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const number = params.get('number');
+if(!number) alert('Bot number missing in URL!');
+
+let originalConfig = {};
+let isEditing = false;
+let selectedEmojis = [];
+
+document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', () => isEditing = true));
+
+const emojiPickerEl = document.getElementById('emojiPicker');
+const emojiListEl = document.getElementById('emojiList');
+const newEmojiEl = document.getElementById('newEmoji');
+
+// Convert picker emojis to spans
+emojiPickerEl.innerHTML = emojiPickerEl.textContent.trim().split(/\s+/).map(e => `<span>${e}</span>`).join('');
+
+// Emoji picker click
+emojiPickerEl.addEventListener('click', e => {
+  if(e.target.tagName === 'SPAN'){
+    const emoji = e.target.textContent;
+    if(selectedEmojis.includes(emoji)){
+      selectedEmojis = selectedEmojis.filter(em => em !== emoji);
+      e.target.classList.remove('selected');
+    } else {
+      selectedEmojis.push(emoji);
+      e.target.classList.add('selected');
+    }
+    renderEmojis();
+    isEditing = true;
+  }
+});
+
+function renderEmojis(){
+  emojiListEl.innerHTML = '';
+  selectedEmojis.forEach((emoji,i)=>{
+    const span = document.createElement('span');
+    span.className = 'emoji-item';
+    span.textContent = emoji;
+    span.onclick = () => {
+      selectedEmojis.splice(i,1);
+      renderEmojis();
+      document.querySelectorAll('#emojiPicker span').forEach(span=>{
+        if(span.textContent === emoji) span.classList.remove('selected');
+      });
+      isEditing = true;
+    };
+    emojiListEl.appendChild(span);
+  });
+}
+
+function addEmoji(){
+  const value = newEmojiEl.value.trim();
+  if(value && !selectedEmojis.includes(value)){
+    selectedEmojis.push(value);
+    renderEmojis();
+    document.querySelectorAll('#emojiPicker span').forEach(span=>{
+      if(span.textContent === value) span.classList.add('selected');
+    });
+    newEmojiEl.value = '';
+    isEditing = true;
+  }
+}
+
+async function loadSettings() {
+  if(!number) return;
+  try{
+    const res = await fetch(`/api/settings/${number}`);
+    const data = await res.json();
+    if(data && !isEditing){
+      originalConfig = data;
+      document.getElementById('prefix').value = data.PREFIX || '.';
+      document.getElementById('button').value = data.BUTTON || 'true';
+      document.getElementById('autoView').value = data.AUTO_VIEW_STATUS || 'true';
+      document.getElementById('autoLikeStatus').value = data.AUTO_LIKE_STATUS || 'true';
+      document.getElementById('autoRecording').value = data.AUTO_RECORDING || 'true';
+      selectedEmojis = data.AUTO_LIKE_EMOJI || ['💗','🔥'];
+      renderEmojis();
+      document.querySelectorAll('#emojiPicker span').forEach(span=>{
+        if(selectedEmojis.includes(span.textContent)) span.classList.add('selected');
+      });
+    }
+  } catch(err){ console.error(err); }
+}
+
+async function saveSettings(){
+  if(!number) return;
+  const updatedConfig = {};
+  if(document.getElementById('prefix').value !== originalConfig.PREFIX) updatedConfig.PREFIX = document.getElementById('prefix').value;
+  if(document.getElementById('button').value !== originalConfig.BUTTON) updatedConfig.BUTTON = document.getElementById('button').value;
+  if(document.getElementById('autoView').value !== originalConfig.AUTO_VIEW_STATUS) updatedConfig.AUTO_VIEW_STATUS = document.getElementById('autoView').value;
+  if(document.getElementById('autoLikeStatus').value !== originalConfig.AUTO_LIKE_STATUS) updatedConfig.AUTO_LIKE_STATUS = document.getElementById('autoLikeStatus').value;
+  if(document.getElementById('autoRecording').value !== originalConfig.AUTO_RECORDING) updatedConfig.AUTO_RECORDING = document.getElementById('autoRecording').value;
+  if(JSON.stringify(selectedEmojis) !== JSON.stringify(originalConfig.AUTO_LIKE_EMOJI)) updatedConfig.AUTO_LIKE_EMOJI = selectedEmojis;
+
+  if(Object.keys(updatedConfig).length===0){
+    document.getElementById('saveMsg').innerText="No changes to save";
+    setTimeout(()=>document.getElementById('saveMsg').innerText='',2000);
+    return;
+  }
+
+  try{
+    const res = await fetch(`/api/settings/${number}`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(updatedConfig)
+    });
+    const data = await res.json();
+    document.getElementById('saveMsg').innerText = data.message || 'Saved!';
+    setTimeout(()=>document.getElementById('saveMsg').innerText='',2000);
+    originalConfig = {...originalConfig,...updatedConfig};
+    isEditing=false;
+  } catch(err){ console.error(err); }
+}
+
+loadSettings();
+</script>
+</body>
+</html>

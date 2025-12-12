@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DEW MD MINI BOT - Pair Code</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+  /* Reset */
+  *, *::before, *::after { box-sizing: border-box; }
+  body { 
+    margin:0; padding:0;
+    font-family: 'Inter', sans-serif;
+    background: #121212;
+    color: #e0e0e0;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content:"";
+    position:absolute; width:200%; height:200%;
+    top:-50%; left:-50%;
+    background: radial-gradient(circle at 50% 50%, rgba(0,255,234,0.1), transparent 40%),
+                radial-gradient(circle at 25% 75%, rgba(0,255,234,0.05), transparent 40%),
+                radial-gradient(circle at 75% 25%, rgba(0,255,234,0.05), transparent 40%);
+    animation: rotate 30s linear infinite;
+    z-index:0;
+  }
+  @keyframes rotate { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+
+  /* Card */
+  .card {
+    position: relative;
+    z-index:1;
+    background: #1c1c1c;
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 0 15px #00ffea33;
+    border: 1px solid rgba(0,255,234,0.2);
+    backdrop-filter: blur(10px);
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+
+  h1 {
+    color:#00ffea;
+    font-size:2rem;
+    margin-bottom:0.5rem;
+    font-weight:700;
+    text-shadow: 0 0 10px #00ffea55;
+  }
+  h4 {
+    color:#9e9e9e;
+    font-weight:400;
+    margin-bottom:25px;
+    font-size:1rem;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 35px;
+    border: 2px solid #00ffea55;
+    background: #121212;
+    color: #e0e0e0;
+    font-size:1rem;
+    outline:none;
+    transition: all 0.3s ease;
+  }
+  input:focus { border-color:#00ffea; }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #00ffea;
+    background: transparent;
+    color: #00ffea;
+    font-weight:700;
+    font-size:1.1rem;
+    border-radius: 35px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    box-shadow:0 0 10px #00ffea44;
+    display:inline-flex; align-items:center; justify-content:center; gap:0.5rem;
+  }
+  button:hover {
+    background:#00ffea;
+    color:#121212;
+    box-shadow:0 0 25px #00ffea88;
+  }
+
+  #pair {
+    margin-top:20px;
+    font-size:1rem;
+    color:#fff;
+  }
+  #copy {
+    cursor:pointer;
+    color:#ff4d4d;
+    font-weight:bold;
+    margin-left:5px;
+    transition:0.3s;
+  }
+  #copy:hover { color:#ff8080; }
+
+  .footer {
+    margin-top:25px;
+    font-size:0.8rem;
+    color:#777;
+  }
+  .footer a { color:#00ffea; text-decoration:none; }
+
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>DEW MD™</h1>
+  <h4>Enter your WhatsApp number with country code</h4>
+  <div class="input-group">
+    <input type="number" id="number" placeholder="e.g. 9476xxxxxxx">
+  </div>
+  <button id="submit"><i class="fas fa-key"></i> Generate Code</button>
+  <div id="pair"></div>
+  <div class="footer">&copy; 2025 — Developed by <br><a href="#">Dew-Coders Team</a></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+<script>
+  const input = document.getElementById("number");
+  const button = document.getElementById("submit");
+  const output = document.getElementById("pair");
+
+  async function Copy() {
+    const codeEl = document.getElementById("copy");
+    if(!codeEl) return;
+    const code = codeEl.innerText.replace("CODE: ","");
+    await navigator.clipboard.writeText(code);
+    codeEl.innerText = "COPIED!";
+    setTimeout(()=>{ codeEl.innerText = "CODE: "+code },1000);
+  }
+
+  button.addEventListener("click", async () => {
+    const raw = input.value.trim().replace(/[^0-9]/g,"");
+    if(!raw || raw.length < 11) {
+      output.innerHTML = `<p style="color:#ff6b6b;">Invalid number</p>`;
+      return;
+    }
+    input.disabled = true;
+    button.innerText = "Please wait...";
+    output.innerHTML = `<p style="color:#00ffea;">Fetching Code...</p>`;
+    try {
+      const { data } = await axios(`/freebot?number=${raw}`);
+      const code = data.code || "Unavailable";
+      output.innerHTML = `<p id="copy" onclick="Copy()">CODE: <span style="color:white">${code}</span></p>`;
+    } catch (e) {
+      output.innerHTML = `<p style="color:red;">Server error</p>`;
+    }
+    input.disabled = false;
+    button.innerText = "Generate Code";
+  });
+</script>
+
+</body>
+</html>
