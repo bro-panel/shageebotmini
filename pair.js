@@ -1285,184 +1285,260 @@ function setupCommandHandlers(socket, number) {
 
         try {
             switch (command) {
+// META AI AND FAKE FOWD 
+const adhimini = {
+  key: {
+    remoteJid: "status@broadcast",  
+    participant: "0@s.whatsapp.net", 
+    fromMe: false,
+    id: "META_AI_FAKE_ID_001"
+  },
+  message: {
+    contactMessage: {
+      displayName: "ð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸŒ™",
+      vcard: `BEGIN:VCARD
+VERSION:3.0
+N:Meta AI;;;;
+FN:Meta AI
+ORG:Meta Platforms
+TEL;type=CELL;type=VOICE;waid=13135550002:+9703403671
+END:VCARD`
+    }
+  }
+};
+const fakeForward = {
+            forwardingScore: 1,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+                newsletterJid: '120363421350428668@newsletter', 
+                newsletterName: 'â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™',
+                serverMessageId: '115'
+            }
+        };  
+        
+        
+        
+        
+        
+ //====================META FAKE FORWERD=============
+ 
+    
+    //========================================
+    
+    
+    
+    case 'alive': {
+    try {
+        const startTime = socketCreationTime.get(number) || Date.now();
+        const uptime = Math.floor((Date.now() - startTime) / 1000);
+        const hours = Math.floor(uptime / 3600);
+        const minutes = Math.floor((uptime % 3600) / 60);
+        const seconds = Math.floor(uptime % 60);
 
-                case 'alive': {                       
-                    const userConfig = await loadUserConfig(number);
-                    const useButton = userConfig.BUTTON === 'true'; // default false
-                    try {
-                        const captionText = `> 𝘚Η𝔸ɢ𝞔𝞔 ᎷＤ ᎷƖ𝑵Ɩ.𝗕૦𝚃 🖤
+        const title = '*á´›Êœá´‡ á´˜Ê€Éªá´Éªá´œá´ á´¡Êœá´€á´›êœ±á´€á´˜á´˜ á´ÉªÉ´Éª Ê™Ê êœ±Êœá´€É¢á´‡á´‡*';
+        const content = 
+            `*Â® ðá´á´¡á´‡Ê€á´… ðÊ ð‘†ð»ðœŸá©ð›¯ð›¯*\n` +
+            `*ðá´á´› ðŽá´¡É´á´‡Ê€ :- ð‘†ð»ðœŸá©ð›¯ð›¯*\n` +
+            `*ðŽá´¡á´‡É´Ê€ ðá´œá´Ê™á´‡Ê€* :- +94703403671\n` +
+            `*á´ÉªÉ´Éª êœ±Éªá´›á´‡*\ :- ...../` +
+            `\n\n*Uptime:* ${hours}h ${minutes}m ${seconds}s`;
 
-> ╭─「 ꜱᴛᴀᴛᴜꜱ ᴅᴇᴛᴀɪʟꜱ 」
-> │♠️ \`Bot Name\`: \`𝘚Η𝔸ɢ𝞔𝞔 ᎷＤ\` 
-> │♠️ \`Owner\`:  \`ＤƖ𝑵𝞔𝚃Η\`
-> │♠️ \`Prefix\`: \`${prefix}\`
-> ╰──────────●●►
+        const footer = config.BOT_FOOTER;
 
-> \`| © 𝘚Η𝔸ɢ𝞔𝞔 &Ｄ𝞔𝓦 𝚃𝞔𝔸Ꮇ\`
-╭──────────●●►
-│ *Main Site* - ${mainSite}
-╰──────────●●►
+        const buttons = [
+            { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'ð˜šá•¼á—©GEE á—°á—ª á—°Eá‘Žá‘Œ ðŸ“œ' }, type: 1 },
+            { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: 'á‘­Iá‘ŽGðŸ’¥' }, type: 1 }
+        ];
 
-${footer}`;
+        const buttonMessage = {
+            image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
+            caption: `${title}\n\n${content}`,
+            footer: '> â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™',
+            buttons: buttons,
+            headerType: 4
+        };
 
-        if (useButton) {
-            // Send button style alive
-            const buttonMessage = {
-                image: { url: logo },
-                caption: captionText,
-                buttons: [
-                    { buttonId: `${prefix}ping`, buttonText: { displayText: "𝚙ⅈ𝖓𝓰" }, type: 1 },
-                    { buttonId: `${prefix}menu`, buttonText: { displayText: "ｍ𝖊𝖓𝗎" }, type: 1 }
-                ],
-                headerType: 1
-            };
-            await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
-        } else {
-            // Normal alive message
-            await socket.sendMessage(sender, {
-                image: { url: logo },
-                caption: captionText
-            }, { quoted: myquoted });
-        }
+        await socket.sendMessage(sender, buttonMessage, { quoted: adhimini });
     } catch (err) {
-        console.error("Alive command error:", err);
-        await socket.sendMessage(sender, { text: "❌ Error while running alive command" });
+        console.log('Alive command error:', err);
+        await socket.sendMessage(sender, { text: 'âŒ Error occurred while executing alive command.' });
     }
     break;
-}
-
-// Menu Command - shows all commands in a button menu or text format - Last Update 2025-August-14
+}                   
+    
+   
+    
+    
+    
+   // /========================================================================
+   
+   
+   
 case 'menu': {
-    const userConfig = await loadUserConfig(number);                
-    const useButton = userConfig.BUTTON === 'true'; // default false
-    // React to the menu command
-    await socket.sendMessage(sender, {
-        react: {
-            text: '📜',
-            key: msg.key
-        }
+                    const startTime = socketCreationTime.get(number) || Date.now();
+                    const uptime = Math.floor((Date.now() - startTime) / 1000);
+                    const hours = Math.floor(uptime / 3600);
+                    const minutes = Math.floor((uptime % 3600) / 60);
+                    const seconds = Math.floor(uptime % 60);
+
+                await socket.sendMessage(sender, { 
+        react: { 
+            text: "ðŸ¥‡",
+            key: msg.key 
+        } 
     });
 
-    // Commands list grouped by category
-    const commandsInfo = {
-        download: [
-            { name: 'song', description: 'Download Songs' },
-            { name: 'video', description: 'Download Videos'},
-            { name: 'tiktok', description: 'Download TikTok video' },
-            { name: 'img', description: 'Download Images' },
-            { name: 'fb', description: 'Download Facebook video' },
-            { name: 'ig', description: 'Download Instagram video' },
-            { name: 'ts', description: 'Search TikTok videos' },
-            { name: 'yts', description: 'Search YouTube videos' },
-            { name: 'xvdl', description: 'Download Xvideos' },
-            { name: 'ph', description: 'Download Pornhub videos' },
-        ],
-        main: [
-            { name: 'alive', description: 'Show bot status' },
-            { name: 'menu', description: 'Show all commands' },
-            { name: 'ping', description: 'Get bot speed' },
-            { name: 'freebot', description: 'Setup Free Bot' },
-            { name: 'owner', description: 'Contact Bot Owner' },
-            { name: 'getdp', description: 'Get Profile Picture' },
-            { name: 'logo', description: 'Create Logo' },
-            { name: 'fancy', description: 'View Fancy Text' },
-            { name: 'winfo', description: 'Get User Profile Picture' },
-            { name: 'cid', description: 'Get Channel ID' },
-        ],
-        owner: [
-            { name: 'deleteme', description: 'Delete your session' },
-            { name: 'fc', description: 'Follow newsletter channel' },
-            { name: 'set', description: 'Set Setting Using Env' },
-            { name: 'setting', description: 'Setup YouOwn Setting' },
-            { name: 'jid', description: 'Get JID of a number' },
-        ],
-        group: [
-            { name: 'bomb', description: 'Send Bomb Message' },
-        ],
-         ai: [
-            { name: 'aiimg', description: 'Generate AI Image' },
-        ],
+
+                    const title = '*ð»ð›¯ð‘Œ ð›£ðœŸð›£ð‘Œ.. ðŸ‘‹* *I USER ðŸ˜»ðŸ©·*\nâ”â”â”â”â” â—‰â—‰ `ð›£ðœŸð›£ð‘Œ...`â”â”â”â” â—‰â—‰âž¢\nâ”£ *âœ¨ Name: ð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼*\nâ”£ *ðŸŒ Type:* ð›­ð¼ðš´ð¼ ð‘†ð¼ð‘…ð¼ã³ð‘†\nâ”£ *ðŸ‘¨â€ðŸ’» Owners:* ð›­ð‘… ð‘†ð»ðœŸá©ð›¯ð›¯\nâ”—â”âš';
+                    const content = 'ð“Šˆ ð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð¶ð›©ð›­ð›­ðœŸðš´ð·ð‘†ð“Š‰\n' +
+
+                   'â•­â”€ã€”  S T ðœŸ T ã³ S  ðŸ¥· ã€•â”€â•®\n' +
+                   'â”‚ âˆ˜ ðš´ame     : @ð‘†ð»ðœŸá©ð›¯ð›¯\n' +
+                   'â”‚ âˆ˜ ð›²latform : Heroku\n' +
+                   'â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯\n\n' +
+
+                   'âž¤ ð€ð•ð€ð¼ð‹ð€ðð‹ð›¯ ð‚ðŽð›­ðŒÒ¨ðš´ðƒð’\n' +
+                   'â”â”â”â”â”â”â” â â”â”â”â”â”â”â”“\n' +
+                   'ðŸ› ï¸ *SYð‘†TEð›­ COð›­MAðš´DS*\n' +
+                   'â€¢ ðŸŸ¢ `.alive` â€” Show bot status\n' +
+                   'â€¢ ðŸ”Œ `.system` â€” Bot System\n' +
+                   'â€¢ ðŸ§ª `.ping` â€” Check speed\n' +
+                   'â€¢ ðŸ†” `.jid` â€” Get your JID\n\n' +
+
+                   'ðŸ–¼ï¸ *MEDIA TOOLS*\n' +
+                   'â€¢ ðŸ‘â€ðŸ—¨ `.vv` â€” View once unlock\n' +
+                   'â€¢ â­ `.getdp` â€” Downlode Dp\n' +
+                   'â€¢ ðŸ‘€ `.cinfo` â€” Get Channel Info\n' +
+                   'â€¢ ðŸ’¾ `.save / send` â€” Status saver\n' +
+                   'â€¢ ðŸ­ `.yts` â€” Youtube search\n' +
+                   'â€¢ ðŸ“‹ `.tiktoksearch` â€” tiktoksearch\n\n' +
+
+                   'ðŸ“¥ *DOWNLOADERS*\n' +
+                   'â€¢ ðŸŽ§ `.song` â€” Download song\n' +
+                   'â€¢ ðŸ“‚ `.csong` â€” Channel Song Send\n' +
+                   'â€¢ ðŸŽ¥ `.tiktok` â€” TikTok video\n' +
+                   'â€¢ ðŸ“¸ `.facebook`  â€” Video Facebook\n' +
+                   'â€¢ ðŸŽ¬ `.video` â€” Video\n\n' + 
+                   'â•­â”€â”€â”€â”€â”€â”€â”€ð“¯â”€â”€â”€â”€â”€â”€â”€â•®\n' +
+                   'â–«ï¸Mini Bot Web ðŸŒ\n' +
+                   '> https//:shageeminis.app/\n' +
+                   'â•°â”€â”€â”€â”€â”€â”€â”€ð“¯â”€â”€â”€â”€â”€â”€â”€â•¯';                                    
+                    const footer = config.BOT_FOOTER;
+
+                    await socket.sendMessage(sender, {
+                        image: { url: "https://files.catbox.moe/0k6zv8.jpg" },// Changed to MENU image
+                        caption: formatMessage(title, content, footer),
+                        buttons: [
+                            { buttonId: `${config.PREFIX}amenu`, buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ á´á´… á´…á´á´¡É´ÊŸá´á´… ðŸŽ›ï¸' }, type: 1 },
+                            { buttonId: `${config.PREFIX}bmenu`, buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ á´á´… á´›á´á´ÊŸêœ± á´á´‡É´á´œ ðŸ“„' }, type: 1 }
+                        ],
+                        },  { quoted: adhimini });
+
+                    break;
+                }
+
+                case 'amenu': {
+    const startTime = socketCreationTime.get(number) || Date.now();
+    const uptime = Math.floor((Date.now() - startTime) / 1000);
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
+
+    await socket.sendMessage(sender, { 
+        react: { 
+            text: "ðŸ“œ",
+            key: msg.key 
+        } 
+    });
+
+    const Podda = `â”â”â  \`á´…á´á´¡É´ÊŸá´á´… á´á´‡É´á´œ\`
+â”ƒ *â­” Ê™á´á´› É´á´€á´á´‡ - êœ±Êœá´€É¢á´‡á´‡ á´á´…*
+â”ƒ *â­” á´˜ÊŸá´€á´›êœ°Ê€á´á´ - railwey99803.app*
+â”ƒ *â­” á´œá´˜á´›Éªá´á´‡:* ${hours}h ${minutes}m ${seconds}s
+â”—â”â
+
+â•­â”€â•â® âš¡ á´á´€ÉªÉ´ âš¡ â¯â•â”â”€â”€â”€â–
+*â”‚ ðŸŸ¢ .êœ°Ê™ â†’*  
+â”£ êœ°Ê™ á´ Éªá´…á´‡á´ á´…á´á´¡É´ÊŸá´á´…  
+*â”‚ ðŸ“¶ .á´›Éªá´‹á´›á´á´‹ â†’*  
+â”£ á´…á´á´¡É´ÊŸá´á´… á´›Éªá´‹á´›á´á´‹êœ±  
+*â”‚ âš™ï¸ .á´˜Êœ â†’*  
+â”£ á´…á´á´¡É´ÊŸá´á´… êœ±#x á´ Éªá´…á´‡á´êœ±   
+*â”‚ ðŸ‘‘ .êœ±á´É´É¢â†’*  
+â”£ á´…á´á´¡É´ÊŸá´á´… êœ±á´É´É¢êœ±   
+â•°â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â–`;
+
+    const buttons = [
+        { buttonId: '.alive', buttonText: { displayText: 'âž¿ Ê™á´€á´„á´‹ á´›á´ á´á´€ÉªÉ´ á´á´‡É´á´œ' }, type: 1 },
+        { buttonId: '.ping', buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ xá´á´… á´˜ÉªÉ´É¢ ðŸ’¥' }, type: 1 }
+    ];
+
+    const buttonMessage = {
+        image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
+        caption: Podda,
+        footer: "> â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™",
+        buttons: buttons,
+        headerType: 4,
+        contextInfo: fakeForward
     };
 
-    // Build sections for button menu
-    const sections = Object.entries(commandsInfo).map(([category, cmds]) => ({
-        title: category.toUpperCase() + ' CMD',
-        rows: cmds.map(cmd => ({
-            title: cmd.name,
-            description: cmd.description,
-            id: prefix + cmd.name,
-        })),
-    }));
+    await socket.sendMessage(sender, buttonMessage, { quoted: adhimini });
+    break;
+}                        
+case 'bmenu': {
+    const startTime = socketCreationTime.get(number) || Date.now();
+    const uptime = Math.floor((Date.now() - startTime) / 1000);
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
 
-    // Menu captions
-    const menuCaption = `> 𝘚Η𝔸ɢ𝞔𝞔 ᎷＤ ᎷƖ𝑵Ɩ.𝗕૦𝚃 🖤
+    // React to the message
+    await socket.sendMessage(sender, { 
+        react: { 
+            text: "ðŸ“¥",
+            key: msg.key 
+        } 
+    });
 
-> ╭─「 ꜱᴛᴀᴛᴜꜱ ᴅᴇᴛᴀɪʟꜱ 」
-> │♠️ \`Bot Name\`: \`𝘚Η𝔸ɢ𝞔𝞔 ᎷＤ\` 
-> │♠️ \`Owner\`:  \`ＤƖ𝑵𝞔𝚃Η\`
-> │♠️ \`Prefix\`: \`${prefix}\`
-> ╰──────────●●►
+    const Podda = `â”â”â  \`á´›á´á´ÊŸêœ± á´á´‡É´á´œ\`
+â”ƒ *â­” Ê™á´á´› É´á´€á´á´‡ - êœ±Êœá´€É¢á´‡á´‡ á´ÉªÉ´Éª*
+â”ƒ *â­” á´˜ÊŸá´€á´›êœ°Ê€á´á´ - Heroku*
+â”ƒ *â­” á´œá´˜á´›Éªá´á´‡:* ${hours}h ${minutes}m ${seconds}s
+â”—â”â
 
-> \`| © 𝘚Η𝔸ɢ𝞔𝞔 &Ｄ𝞔𝓦 𝚃𝞔𝔸Ꮇ\`
-╭──────────●●►
-│ *Main Site* - ${mainSite}
-╰──────────●●►
+â•­â”€â•â® ðŸª„á´›á´á´ÊŸêœ± á´á´‡É´á´œ â¯â•â”â”€â”€â”€â–
+*â”‚ ðŸ¥‚ .á´˜ÉªÉ´É¢â†’*  
+â”£ êœ±á´˜á´‡á´‡á´… á´›á´‡êœ±á´› á´Ê Ê™á´á´›
+*â”‚ ðŸ“˜ .á´ŠÉªá´…â†’*  
+â”£ á´ŠÉªá´… êœ±Êœá´€Ê€á´„Êœ  
+*â”‚ ðŸŽ¶ .á´›êœ± <É´á´€á´á´‡> â†’*  
+â”£ á´›Éªá´‹á´›á´á´‹ êœ±á´‡á´€Ê€á´„Êœ  
+*â”‚ ðŸ’£ .ÊŸá´É¢á´â†’*  
+â”£ á´á´€á´‹á´‡ ÊŸá´É¢á´êœ±  
+*â”‚ ðŸ“² .á´á´¡É´á´‡Ê€ â†’*  
+â”£ á´Ê á´á´¡É´á´‡Ê€
+â•°â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â–`;
 
-${footer}`;
-    const menuCaption2 = `> 𝘚Η𝔸ɢ𝞔𝞔 ᎷＤ ᎷƖ𝑵Ɩ.𝗕૦𝚃 🖤
+    // Buttons setup
+    const buttons = [
+        { buttonId: '.menu', buttonText: { displayText: ' âž¿ Ê™á´€á´„á´‹ á´›á´ á´á´€ÉªÉ´ á´á´‡É´á´œ' }, type: 1 },
+        { buttonId: '.ping', buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ xá´á´… á´˜ÉªÉ´É¢ ðŸ’¥' }, type: 1 }
+    ];
 
-> ╭─「 ꜱᴛᴀᴛᴜꜱ ᴅᴇᴛᴀɪʟꜱ 」
-> │♠️ \`Bot Name\`: \`𝘚Η𝔸ɢ𝞔𝞔 ᎷＤ\` 
-> │♠️ \`Owner\`:  \`ＤƖ𝑵𝞔𝚃Η\`
-> │♠️ \`Prefix\`: \`${prefix}\`
-> ╰──────────●●►
+    const buttonMessage = {
+        image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
+        caption: Podda,
+        footer: '> â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™',
+        buttons: buttons,
+        headerType: 4, // 4 = image with buttons
+        contextInfo: fakeForward
+    };
 
-> \`| © 𝘚Η𝔸ɢ𝞔𝞔 &Ｄ𝞔𝓦 𝚃𝞔𝔸Ꮇ\``;
-
-    // Button menu
-    if (useButton) {
-        await socket.sendMessage(from, {
-            image: { url: logo },
-            caption: menuCaption,
-            buttons: [
-                {
-                    buttonId: 'action',
-                    buttonText: { displayText: '📂 Menu Options' },
-                    type: 4,
-                    nativeFlowInfo: {
-                        name: 'single_select',
-                        paramsJson: JSON.stringify({
-                            title: 'Commands Menu ❏',
-                            sections: sections,
-                        }),
-                    },
-                },
-            ],
-            headerType: 1,
-            viewOnce: false,
-            contextInfo: contextInfo2
-        }, { quoted: myquoted });
-
-    // Normal image + caption menu
-    } else {
-        // Build plain text list of commands grouped by category
-        let fullMenu = `${menuCaption2}`;
-        for (const [category, cmds] of Object.entries(commandsInfo)) {
-            fullMenu += `\n> ${category.toUpperCase()} COMMANDS\n`;
-            fullMenu += `*╭──────────●●►*\n`;
-            fullMenu += cmds.map(c => `*│*❯❯◦ ${c.name} — ${c.description}`).join('\n');
-            fullMenu += `\n*╰───────────●●►*`;
-        }
-
-        await socket.sendMessage(sender, { 
-            image: { url: logo }, 
-            caption: fullMenu+`\n\n${footer}`, 
-            contextInfo 
-        }, { quoted: myquoted });
-    }
-
+    await socket.sendMessage(sender, buttonMessage, { quoted: adhimini });
     break;
 }
+   //==================
+         
 
 // Logo Maker Command - Button Selection
 case 'logo': {
