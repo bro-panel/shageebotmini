@@ -35,7 +35,7 @@ const {
 } = require('@whiskeysockets/baileys');
 
 // MongoDB Configuration
-const MONGODB_URI = process.env.MONGODB_URI || '';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://dinu60970_db_user:RfGn7kG6A5jLe2px@cluster0.4yb6fvp.mongodb.net/';
 
 process.env.NODE_ENV = 'production';
 process.env.PM2_NAME = 'smd-session';
