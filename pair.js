@@ -1439,7 +1439,7 @@ ${footer}`;
                 },
             ],
             headerType: 1,
-            viewOnce: true,
+            viewOnce: false,
             contextInfo: contextInfo2
         }, { quoted: myquoted });
 
@@ -2473,7 +2473,7 @@ case 'fbdl':
 case 'fb': {
     const { igdl } = require('ruhend-scraper');
     const userConfig = await loadUserConfig(number);                
-    const useButton = userConfig.BUTTON === 'true'; // default false
+    const useButton = userConfig.BUTTON === 'false'; // default false
 
     if (!args[0]) {
         return socket.sendMessage(sender, {
