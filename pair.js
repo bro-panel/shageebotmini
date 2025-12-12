@@ -43,8 +43,8 @@ process.env.PM2_NAME = 'smd-session';
 console.log('🚀 Auto Session Manager initialized with MongoDB Atlas');
 
 // Configs
-const footer = `> 𝗦ꁝꋬG̷E̷E ᗰＤᎷƖ𝑵Ɩ 𝗕૦𝚃 𝗕Ⲩ Ｄ𝞔𝓦 𝘚Η𝔸ɢ𝞔𝞔 l ꙰╰_╯`
-const logo = `https://files.catbox.moe/069me0.png`;
+const footer = `> \`𝗦ꁝꋬG̷E̷E ᗰＤᎷƖ𝑵Ɩ 𝗕૦𝚃 𝗕Ⲩ Ｄ𝞔𝓦 𝘚Η𝔸ɢ𝞔𝞔 l ꙰╰_╯\``
+const logo = `https://files.catbox.moe/0k6zv8.jpg`;
 const caption = `𝘚Η𝔸ɢ𝞔𝞔.ᎷƖ𝑵Ɩ 𝗕૦𝚃`; 
 const botName = '𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐷'
 const mainSite = 'dew-md.free.nf';
