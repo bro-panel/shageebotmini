@@ -1285,42 +1285,7 @@ function setupCommandHandlers(socket, number) {
 
         try {
             switch (command) {
-// META AI AND FAKE FOWD 
-const adhimini = {
-  key: {
-    remoteJid: "status@broadcast",  
-    participant: "0@s.whatsapp.net", 
-    fromMe: false,
-    id: "META_AI_FAKE_ID_001"
-  },
-  message: {
-    contactMessage: {
-      displayName: "ð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸŒ™",
-      vcard: `BEGIN:VCARD
-VERSION:3.0
-N:Meta AI;;;;
-FN:Meta AI
-ORG:Meta Platforms
-TEL;type=CELL;type=VOICE;waid=13135550002:+9703403671
-END:VCARD`
-    }
-  }
-};
-const fakeForward = {
-            forwardingScore: 1,
-            isForwarded: true,
-            forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363421350428668@newsletter', 
-                newsletterName: 'â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™',
-                serverMessageId: '115'
-            }
-        };  
-        
-        
-        
-        
-        
- //====================META FAKE FORWERD=============
+
  
     
     //========================================
@@ -1366,7 +1331,42 @@ const fakeForward = {
     break;
 }                   
     
-   
+   // META AI AND FAKE FOWD 
+const adhimini = {
+  key: {
+    remoteJid: "status@broadcast",  
+    participant: "0@s.whatsapp.net", 
+    fromMe: false,
+    id: "META_AI_FAKE_ID_001"
+  },
+  message: {
+    contactMessage: {
+      displayName: "ð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸŒ™",
+      vcard: `BEGIN:VCARD
+VERSION:3.0
+N:Meta AI;;;;
+FN:Meta AI
+ORG:Meta Platforms
+TEL;type=CELL;type=VOICE;waid=13135550002:+9703403671
+END:VCARD`
+    }
+  }
+};
+const fakeForward = {
+            forwardingScore: 1,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+                newsletterJid: '120363421350428668@newsletter', 
+                newsletterName: 'â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™',
+                serverMessageId: '115'
+            }
+        };  
+        
+        
+        
+        
+        
+ //====================META FAKE FORWERD=============
     
     
     
