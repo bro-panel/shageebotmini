@@ -1432,7 +1432,7 @@ case 'menu': {
                             { buttonId: `${config.PREFIX}amenu`, buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ á´á´… á´…á´á´¡É´ÊŸá´á´… ðŸŽ›ï¸' }, type: 1 },
                             { buttonId: `${config.PREFIX}bmenu`, buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ á´á´… á´›á´á´ÊŸêœ± á´á´‡É´á´œ ðŸ“„' }, type: 1 }
                         ],
-                        },  { quoted: adhimini });
+                        },  { quoted: myquoted });
 
                     break;
                 }
@@ -1482,7 +1482,7 @@ case 'menu': {
         contextInfo: fakeForward
     };
 
-    await socket.sendMessage(sender, buttonMessage, { quoted: adhimini });
+    await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
     break;
 }                        
 case 'bmenu': {
@@ -1534,7 +1534,7 @@ case 'bmenu': {
         contextInfo: fakeForward
     };
 
-    await socket.sendMessage(sender, buttonMessage, { quoted: adhimini });
+    await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
     break;
 }
    //==================
