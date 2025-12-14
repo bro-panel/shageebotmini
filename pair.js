@@ -1304,10 +1304,10 @@ function setupCommandHandlers(socket, number) {
 
         const title = 'ᴛʜᴇ ᴘʀɪᴍɪᴜᴍ ᴡʜᴀᴛꜱᴀᴘᴘ ᴍɪɴɪ ʙʏ ꜱʜᴀɢᴇᴇ';
         const content = 
-            *® 𝐏ᴏᴡᴇʀᴅ 𝐁ʏ 𝑆𝐻𝜟Ꮹ𝛯𝛯*\n +
-            *𝐁ᴏᴛ 𝐎ᴡɴᴇʀ :- 𝑆𝐻𝜟Ꮹ𝛯𝛯*\n +
-            *𝐎ᴡᴇɴʀ 𝐍ᴜᴍʙᴇʀ* :- +94703403671\n +
-            *ᴍɪɴɪ ꜱɪᴛᴇ*\ :- ...../ +
+            ® 𝐏ᴏᴡᴇʀᴅ 𝐁ʏ 𝑆𝐻𝜟Ꮹ𝛯𝛯\n +
+            𝐁ᴏᴛ 𝐎ᴡɴᴇʀ :- 𝑆𝐻𝜟Ꮹ𝛯𝛯*\n +
+            𝐎ᴡᴇɴʀ 𝐍ᴜᴍʙᴇʀ :- +94703403671\n +
+            ᴍɪɴɪ ꜱɪᴛᴇ\ :- ...../ +
             \n\n*Uptime:* ${hours}h ${minutes}m ${seconds}s;
 
         const footer = config.BOT_FOOTER;
