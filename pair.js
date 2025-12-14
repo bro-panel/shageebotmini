@@ -1313,8 +1313,8 @@ function setupCommandHandlers(socket, number) {
         const footer = config.BOT_FOOTER;
 
         const buttons = [
-            { buttonId: ${config.PREFIX}menu, buttonText: { displayText: '𝘚ᕼᗩGEE ᗰᗪ ᗰEᑎᑌ 📜' }, type: 1 },
-            { buttonId: ${config.PREFIX}ping, buttonText: { displayText: 'ᑭIᑎG💥' }, type: 1 }
+            { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '𝘚ᕼᗩGEE ᗰᗪ ᗰEᑎᑌ 📜' }, type: 1 },
+            { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: 'ᑭIᑎG💥' }, type: 1 }
         ];
 
         const buttonMessage = {
@@ -1328,7 +1328,7 @@ function setupCommandHandlers(socket, number) {
         await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
     } catch (err) {
         console.log('Alive command error:', err);
-        await socket.sendMessage(sender, { text: '❌ Error occurred while executing alive command.' });
+        await socket.sendMessage(sender, { text: '❌ Error executing alive command.' });
     }
     break;
 }                   
@@ -1337,9 +1337,7 @@ function setupCommandHandlers(socket, number) {
     
     
     
-   // /========================================================================
-   
-   
+  
    
 case 'menu': {
                     const startTime = socketCreationTime.get(number) || Date.now();
