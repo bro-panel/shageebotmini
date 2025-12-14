@@ -1319,7 +1319,7 @@ function setupCommandHandlers(socket, number) {
 
         const buttonMessage = {
             image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
-            caption: ${title}\n\n${content},
+            caption: `${title}\n\n${content}`,
             footer: '> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙',
             buttons: buttons,
             headerType: 4
