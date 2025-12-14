@@ -1287,6 +1287,8 @@ function setupCommandHandlers(socket, number) {
             switch (command) {
 
  
+   //====================META FAKE FORWERD=============
+ 
     
     //========================================
     
@@ -1300,73 +1302,38 @@ function setupCommandHandlers(socket, number) {
         const minutes = Math.floor((uptime % 3600) / 60);
         const seconds = Math.floor(uptime % 60);
 
-        const title = '*á´›Êœá´‡ á´˜Ê€Éªá´Éªá´œá´ á´¡Êœá´€á´›êœ±á´€á´˜á´˜ á´ÉªÉ´Éª Ê™Ê êœ±Êœá´€É¢á´‡á´‡*';
+        const title = 'ᴛʜᴇ ᴘʀɪᴍɪᴜᴍ ᴡʜᴀᴛꜱᴀᴘᴘ ᴍɪɴɪ ʙʏ ꜱʜᴀɢᴇᴇ';
         const content = 
-            `*Â® ðá´á´¡á´‡Ê€á´… ðÊ ð‘†ð»ðœŸá©ð›¯ð›¯*\n` +
-            `*ðá´á´› ðŽá´¡É´á´‡Ê€ :- ð‘†ð»ðœŸá©ð›¯ð›¯*\n` +
-            `*ðŽá´¡á´‡É´Ê€ ðá´œá´Ê™á´‡Ê€* :- +94703403671\n` +
-            `*á´ÉªÉ´Éª êœ±Éªá´›á´‡*\ :- ...../` +
-            `\n\n*Uptime:* ${hours}h ${minutes}m ${seconds}s`;
+            *® 𝐏ᴏᴡᴇʀᴅ 𝐁ʏ 𝑆𝐻𝜟Ꮹ𝛯𝛯*\n +
+            *𝐁ᴏᴛ 𝐎ᴡɴᴇʀ :- 𝑆𝐻𝜟Ꮹ𝛯𝛯*\n +
+            *𝐎ᴡᴇɴʀ 𝐍ᴜᴍʙᴇʀ* :- +94703403671\n +
+            *ᴍɪɴɪ ꜱɪᴛᴇ*\ :- ...../ +
+            \n\n*Uptime:* ${hours}h ${minutes}m ${seconds}s;
 
         const footer = config.BOT_FOOTER;
 
         const buttons = [
-            { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'ð˜šá•¼á—©GEE á—°á—ª á—°Eá‘Žá‘Œ ðŸ“œ' }, type: 1 },
-            { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: 'á‘­Iá‘ŽGðŸ’¥' }, type: 1 }
+            { buttonId: ${config.PREFIX}menu, buttonText: { displayText: '𝘚ᕼᗩGEE ᗰᗪ ᗰEᑎᑌ 📜' }, type: 1 },
+            { buttonId: ${config.PREFIX}ping, buttonText: { displayText: 'ᑭIᑎG💥' }, type: 1 }
         ];
 
         const buttonMessage = {
             image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
-            caption: `${title}\n\n${content}`,
-            footer: '> â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™',
+            caption: ${title}\n\n${content},
+            footer: '> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙',
             buttons: buttons,
             headerType: 4
         };
 
-        await socket.sendMessage(sender, buttonMessage, { quoted: adhimini });
+        await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
     } catch (err) {
         console.log('Alive command error:', err);
-        await socket.sendMessage(sender, { text: 'âŒ Error occurred while executing alive command.' });
+        await socket.sendMessage(sender, { text: '❌ Error occurred while executing alive command.' });
     }
     break;
 }                   
     
-   // META AI AND FAKE FOWD 
-const adhimini = {
-  key: {
-    remoteJid: "status@broadcast",  
-    participant: "0@s.whatsapp.net", 
-    fromMe: false,
-    id: "META_AI_FAKE_ID_001"
-  },
-  message: {
-    contactMessage: {
-      displayName: "ð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸŒ™",
-      vcard: `BEGIN:VCARD
-VERSION:3.0
-N:Meta AI;;;;
-FN:Meta AI
-ORG:Meta Platforms
-TEL;type=CELL;type=VOICE;waid=13135550002:+9703403671
-END:VCARD`
-    }
-  }
-};
-const fakeForward = {
-            forwardingScore: 1,
-            isForwarded: true,
-            forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363421350428668@newsletter', 
-                newsletterName: 'â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™',
-                serverMessageId: '115'
-            }
-        };  
-        
-        
-        
-        
-        
- //====================META FAKE FORWERD=============
+   
     
     
     
@@ -1383,54 +1350,54 @@ case 'menu': {
 
                 await socket.sendMessage(sender, { 
         react: { 
-            text: "ðŸ¥‡",
+            text: "🇱🇰",
             key: msg.key 
         } 
     });
 
 
-                    const title = '*ð»ð›¯ð‘Œ ð›£ðœŸð›£ð‘Œ.. ðŸ‘‹* *I USER ðŸ˜»ðŸ©·*\nâ”â”â”â”â” â—‰â—‰ `ð›£ðœŸð›£ð‘Œ...`â”â”â”â” â—‰â—‰âž¢\nâ”£ *âœ¨ Name: ð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼*\nâ”£ *ðŸŒ Type:* ð›­ð¼ðš´ð¼ ð‘†ð¼ð‘…ð¼ã³ð‘†\nâ”£ *ðŸ‘¨â€ðŸ’» Owners:* ð›­ð‘… ð‘†ð»ðœŸá©ð›¯ð›¯\nâ”—â”âš';
-                    const content = 'ð“Šˆ ð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð¶ð›©ð›­ð›­ðœŸðš´ð·ð‘†ð“Š‰\n' +
+                    const title = '𝐻𝛯𝑌 𝛣𝜟𝛣𝑌.. 👋 I USER 😻🩷\n┏━━━━ ◉◉ 𝛣𝜟𝛣𝑌...━━━━ ◉◉➢\n┣ ✨ Name: 𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼\n┣ 🌐 Type: 𝛭𝐼𝚴𝐼 𝑆𝐼𝑅𝐼び𝑆\n┣ 👨‍💻 Owners: 𝛭𝑅 𝑆𝐻𝜟Ꮹ𝛯𝛯\n┗━⚝';
+                    const content = '𓊈 𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝐶𝛩𝛭𝛭𝜟𝚴𝐷𝑆𓊉\n' +
 
-                   'â•­â”€ã€”  S T ðœŸ T ã³ S  ðŸ¥· ã€•â”€â•®\n' +
-                   'â”‚ âˆ˜ ðš´ame     : @ð‘†ð»ðœŸá©ð›¯ð›¯\n' +
-                   'â”‚ âˆ˜ ð›²latform : Heroku\n' +
-                   'â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯\n\n' +
+                   '╭─〔  S T 𝜟 T び S  🥷 〕─╮\n' +
+                   '│ ∘ 𝚴ame     : @𝑆𝐻𝜟Ꮹ𝛯𝛯\n' +
+                   '│ ∘ 𝛲latform : Heroku\n' +
+                   '╰─────────────╯\n\n' +
 
-                   'âž¤ ð€ð•ð€ð¼ð‹ð€ðð‹ð›¯ ð‚ðŽð›­ðŒÒ¨ðš´ðƒð’\n' +
-                   'â”â”â”â”â”â”â” â â”â”â”â”â”â”â”“\n' +
-                   'ðŸ› ï¸ *SYð‘†TEð›­ COð›­MAðš´DS*\n' +
-                   'â€¢ ðŸŸ¢ `.alive` â€” Show bot status\n' +
-                   'â€¢ ðŸ”Œ `.system` â€” Bot System\n' +
-                   'â€¢ ðŸ§ª `.ping` â€” Check speed\n' +
-                   'â€¢ ðŸ†” `.jid` â€” Get your JID\n\n' +
+                   '➤ 𝐀𝐕𝐀𝐼𝐋𝐀𝐁𝐋𝛯 𝐂𝐎𝛭𝐌Ҩ𝚴𝐃𝐒\n' +
+                   '┏━━━━━━ ❍ ━━━━━━┓\n' +
+                   '🛠️ SY𝑆TE𝛭 CO𝛭MA𝚴DS\n' +
+                   '• 🟢 .alive — Show bot status\n' +
+                   '• 🔌 .system — Bot System\n' +
+                   '• 🧪 .ping — Check speed\n' +
+                   '• 🆔 .jid — Get your JID\n\n' +
 
-                   'ðŸ–¼ï¸ *MEDIA TOOLS*\n' +
-                   'â€¢ ðŸ‘â€ðŸ—¨ `.vv` â€” View once unlock\n' +
-                   'â€¢ â­ `.getdp` â€” Downlode Dp\n' +
-                   'â€¢ ðŸ‘€ `.cinfo` â€” Get Channel Info\n' +
-                   'â€¢ ðŸ’¾ `.save / send` â€” Status saver\n' +
-                   'â€¢ ðŸ­ `.yts` â€” Youtube search\n' +
-                   'â€¢ ðŸ“‹ `.tiktoksearch` â€” tiktoksearch\n\n' +
+                   '🖼️ MEDIA TOOLS\n' +
+                   '• 👁‍🗨 .vv — View once unlock\n' +
+                   '• ⭐ .getdp — Downlode Dp\n' +
+                   '• 👀 .cinfo — Get Channel Info\n' +
+                   '• 💾 .save / send — Status saver\n' +
+                   '• 🍭 .yts — Youtube search\n' +
+                   '• 📋 .tiktoksearch — tiktoksearch\n\n' +
 
-                   'ðŸ“¥ *DOWNLOADERS*\n' +
-                   'â€¢ ðŸŽ§ `.song` â€” Download song\n' +
-                   'â€¢ ðŸ“‚ `.csong` â€” Channel Song Send\n' +
-                   'â€¢ ðŸŽ¥ `.tiktok` â€” TikTok video\n' +
-                   'â€¢ ðŸ“¸ `.facebook`  â€” Video Facebook\n' +
-                   'â€¢ ðŸŽ¬ `.video` â€” Video\n\n' + 
-                   'â•­â”€â”€â”€â”€â”€â”€â”€ð“¯â”€â”€â”€â”€â”€â”€â”€â•®\n' +
-                   'â–«ï¸Mini Bot Web ðŸŒ\n' +
+                   '📥 DOWNLOADERS\n' +
+                   '• 🎧 .song — Download song\n' +
+                   '• 📂 .csong — Channel Song Send\n' +
+                   '• 🎥 .tiktok — TikTok video\n' +
+                   '• 📸 .facebook  — Video Facebook\n' +
+                   '• 🎬 .video — Video\n\n' + 
+                   '╭───────𓍯───────╮\n' +
+                   '▫️Mini Bot Web 🌐\n' +
                    '> https//:shageeminis.app/\n' +
-                   'â•°â”€â”€â”€â”€â”€â”€â”€ð“¯â”€â”€â”€â”€â”€â”€â”€â•¯';                                    
+                   '╰───────𓍯───────╯';                                    
                     const footer = config.BOT_FOOTER;
 
                     await socket.sendMessage(sender, {
                         image: { url: "https://files.catbox.moe/0k6zv8.jpg" },// Changed to MENU image
                         caption: formatMessage(title, content, footer),
                         buttons: [
-                            { buttonId: `${config.PREFIX}amenu`, buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ á´á´… á´…á´á´¡É´ÊŸá´á´… ðŸŽ›ï¸' }, type: 1 },
-                            { buttonId: `${config.PREFIX}bmenu`, buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ á´á´… á´›á´á´ÊŸêœ± á´á´‡É´á´œ ðŸ“„' }, type: 1 }
+                            { buttonId: ${config.PREFIX}amenu, buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ ᴍᴅ ᴅᴏᴡɴʟᴏᴅ 🎛️' }, type: 1 },
+                            { buttonId: ${config.PREFIX}bmenu, buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ ᴍᴅ ᴛᴏᴏʟꜱ ᴍᴇɴᴜ 📄' }, type: 1 }
                         ],
                         },  { quoted: myquoted });
 
@@ -1446,37 +1413,37 @@ case 'menu': {
 
     await socket.sendMessage(sender, { 
         react: { 
-            text: "ðŸ“œ",
+            text: "📜",
             key: msg.key 
         } 
     });
 
-    const Podda = `â”â”â  \`á´…á´á´¡É´ÊŸá´á´… á´á´‡É´á´œ\`
-â”ƒ *â­” Ê™á´á´› É´á´€á´á´‡ - êœ±Êœá´€É¢á´‡á´‡ á´á´…*
-â”ƒ *â­” á´˜ÊŸá´€á´›êœ°Ê€á´á´ - railwey99803.app*
-â”ƒ *â­” á´œá´˜á´›Éªá´á´‡:* ${hours}h ${minutes}m ${seconds}s
-â”—â”â
+    const Podda = ┏━❐  \`ᴅᴏᴡɴʟᴏᴅ ᴍᴇɴᴜ\
+┃ ⭔ ʙᴏᴛ ɴᴀᴍᴇ - ꜱʜᴀɢᴇᴇ ᴍᴅ
+┃ ⭔ ᴘʟᴀᴛꜰʀᴏᴍ - railwey99803.app
+┃ ⭔ ᴜᴘᴛɪᴍᴇ: ${hours}h ${minutes}m ${seconds}s
+┗━❐
 
-â•­â”€â•â® âš¡ á´á´€ÉªÉ´ âš¡ â¯â•â”â”€â”€â”€â–
-*â”‚ ðŸŸ¢ .êœ°Ê™ â†’*  
-â”£ êœ°Ê™ á´ Éªá´…á´‡á´ á´…á´á´¡É´ÊŸá´á´…  
-*â”‚ ðŸ“¶ .á´›Éªá´‹á´›á´á´‹ â†’*  
-â”£ á´…á´á´¡É´ÊŸá´á´… á´›Éªá´‹á´›á´á´‹êœ±  
-*â”‚ âš™ï¸ .á´˜Êœ â†’*  
-â”£ á´…á´á´¡É´ÊŸá´á´… êœ±#x á´ Éªá´…á´‡á´êœ±   
-*â”‚ ðŸ‘‘ .êœ±á´É´É¢â†’*  
-â”£ á´…á´á´¡É´ÊŸá´á´… êœ±á´É´É¢êœ±   
-â•°â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â–`;
+╭─═❮ ⚡ ᴍᴀɪɴ ⚡ ❯═━───❖
+│ 🟢 .ꜰʙ →  
+┣ ꜰʙ ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴅ  
+│ 📶 .ᴛɪᴋᴛᴏᴋ →  
+┣ ᴅᴏᴡɴʟᴏᴅ ᴛɪᴋᴛᴏᴋꜱ  
+│ ⚙️ .ᴘʜ →  
+┣ ᴅᴏᴡɴʟᴏᴅ ꜱ#x ᴠɪᴅᴇᴏꜱ   
+│ 👑 .ꜱᴏɴɢ→  
+┣ ᴅᴏᴡɴʟᴏᴅ ꜱᴏɴɢꜱ   
+╰━━━━━━━━━━━━━━━━━━━❖`;
 
     const buttons = [
-        { buttonId: '.alive', buttonText: { displayText: 'âž¿ Ê™á´€á´„á´‹ á´›á´ á´á´€ÉªÉ´ á´á´‡É´á´œ' }, type: 1 },
-        { buttonId: '.ping', buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ xá´á´… á´˜ÉªÉ´É¢ ðŸ’¥' }, type: 1 }
+        { buttonId: '.alive', buttonText: { displayText: '➿ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴍᴇɴᴜ' }, type: 1 },
+        { buttonId: '.ping', buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ xᴍᴅ ᴘɪɴɢ 💥' }, type: 1 }
     ];
 
     const buttonMessage = {
         image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
         caption: Podda,
-        footer: "> â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™",
+        footer: "> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙",
         buttons: buttons,
         headerType: 4,
         contextInfo: fakeForward
@@ -1495,40 +1462,40 @@ case 'bmenu': {
     // React to the message
     await socket.sendMessage(sender, { 
         react: { 
-            text: "ðŸ“¥",
+            text: "📥",
             key: msg.key 
         } 
     });
 
-    const Podda = `â”â”â  \`á´›á´á´ÊŸêœ± á´á´‡É´á´œ\`
-â”ƒ *â­” Ê™á´á´› É´á´€á´á´‡ - êœ±Êœá´€É¢á´‡á´‡ á´ÉªÉ´Éª*
-â”ƒ *â­” á´˜ÊŸá´€á´›êœ°Ê€á´á´ - Heroku*
-â”ƒ *â­” á´œá´˜á´›Éªá´á´‡:* ${hours}h ${minutes}m ${seconds}s
-â”—â”â
+    const Podda = ┏━❐  \`ᴛᴏᴏʟꜱ ᴍᴇɴᴜ\
+┃ ⭔ ʙᴏᴛ ɴᴀᴍᴇ - ꜱʜᴀɢᴇᴇ ᴍɪɴɪ
+┃ ⭔ ᴘʟᴀᴛꜰʀᴏᴍ - Heroku
+┃ ⭔ ᴜᴘᴛɪᴍᴇ: ${hours}h ${minutes}m ${seconds}s
+┗━❐
 
-â•­â”€â•â® ðŸª„á´›á´á´ÊŸêœ± á´á´‡É´á´œ â¯â•â”â”€â”€â”€â–
-*â”‚ ðŸ¥‚ .á´˜ÉªÉ´É¢â†’*  
-â”£ êœ±á´˜á´‡á´‡á´… á´›á´‡êœ±á´› á´Ê Ê™á´á´›
-*â”‚ ðŸ“˜ .á´ŠÉªá´…â†’*  
-â”£ á´ŠÉªá´… êœ±Êœá´€Ê€á´„Êœ  
-*â”‚ ðŸŽ¶ .á´›êœ± <É´á´€á´á´‡> â†’*  
-â”£ á´›Éªá´‹á´›á´á´‹ êœ±á´‡á´€Ê€á´„Êœ  
-*â”‚ ðŸ’£ .ÊŸá´É¢á´â†’*  
-â”£ á´á´€á´‹á´‡ ÊŸá´É¢á´êœ±  
-*â”‚ ðŸ“² .á´á´¡É´á´‡Ê€ â†’*  
-â”£ á´Ê á´á´¡É´á´‡Ê€
-â•°â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â–`;
+╭─═❮ 🪄ᴛᴏᴏʟꜱ ᴍᴇɴᴜ ❯═━───❖
+│ 🥂 .ᴘɪɴɢ→  
+┣ ꜱᴘᴇᴇᴅ ᴛᴇꜱᴛ ᴍʏ ʙᴏᴛ
+│ 📘 .ᴊɪᴅ→  
+┣ ᴊɪᴅ ꜱʜᴀʀᴄʜ  
+│ 🎶 .ᴛꜱ <ɴᴀᴍᴇ> →  
+┣ ᴛɪᴋᴛᴏᴋ ꜱᴇᴀʀᴄʜ  
+│ 💣 .ʟᴏɢᴏ→  
+┣ ᴍᴀᴋᴇ ʟᴏɢᴏꜱ  
+│ 📲 .ᴏᴡɴᴇʀ →  
+┣ ᴍʏ ᴏᴡɴᴇʀ
+╰━━━━━━━━━━━━━━━━━━━❖`;
 
     // Buttons setup
     const buttons = [
-        { buttonId: '.menu', buttonText: { displayText: ' âž¿ Ê™á´€á´„á´‹ á´›á´ á´á´€ÉªÉ´ á´á´‡É´á´œ' }, type: 1 },
-        { buttonId: '.ping', buttonText: { displayText: 'êœ±Êœá´€É¢á´‡á´‡ xá´á´… á´˜ÉªÉ´É¢ ðŸ’¥' }, type: 1 }
+        { buttonId: '.menu', buttonText: { displayText: ' ➿ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴍᴇɴᴜ' }, type: 1 },
+        { buttonId: '.ping', buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ xᴍᴅ ᴘɪɴɢ 💥' }, type: 1 }
     ];
 
     const buttonMessage = {
         image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
         caption: Podda,
-        footer: '> â›©ï¸ÍŸÍžÌ¶ðŸ”¥âƒð‘†ð»ðœŸá©ð›¯ð›¯ ð›­ð¼ðš´ð¼ ð›£ð›©äº‡ðŸ•Šï¸Ì¶ÍžÍŸðŸŒ™',
+        footer: '> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙',
         buttons: buttons,
         headerType: 4, // 4 = image with buttons
         contextInfo: fakeForward
@@ -1537,7 +1504,9 @@ case 'bmenu': {
     await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
     break;
 }
-   //==================
+   //==================     
+    
+   
          
 
 // Logo Maker Command - Button Selection
@@ -2549,7 +2518,7 @@ case 'fbdl':
 case 'fb': {
     const { igdl } = require('ruhend-scraper');
     const userConfig = await loadUserConfig(number);                
-    const useButton = userConfig.BUTTON === 'false'; // default false
+    const useButton = userConfig.BUTTON === 'true'; // default false
 
     if (!args[0]) {
         return socket.sendMessage(sender, {
@@ -2841,7 +2810,7 @@ await socket.sendMessage(sender, { react: { text: '🔎', key: msg.key } });
 
 } catch (err) {
   console.error('Song case error:', err);
-  await socket.sendMessage(sender, { text: "*`Error occurred while processing song request`*" }, { quoted: msg });
+  await socket.sendMessage(sender, { text: "*`Error occurred while processing song request`*" }, { quoted: myquoted });
 }
 break;
 }
@@ -2923,7 +2892,7 @@ case 'video': {
                 contextInfo: contextInfo
             }, { quoted: myquoted })
 
-            const res = await fetch(`${apibase}/download/ytmp4?apikey=${apikey}&url=${url}`);
+            const res = await fetch(`https://api.srihub.store/download/ytmp4?apikey=dew_hFjyfoUDx5IFFLDMU9ljc3DEaDCCC9niVbWG78KU&url=${url}`);
             const deta = await res.json();
 
             if (!deta.success || !deta.result.download_url) {
@@ -2980,7 +2949,7 @@ case 'downloadvid': {
         await socket.sendMessage(from, { react: { text: '⬇️', key: msg.key } });
 
         // Fetch video download link
-        const res = await fetch(`${apibase}/download/ytmp4?apikey=${apikey}&url=${url}`);
+        const res = await fetch(`https://api.srihub.store/download/ytmp4?apikey=dew_hFjyfoUDx5IFFLDMU9ljc3DEaDCCC9niVbWG78KU&url=${url}`);
         const data = await res.json();
         if (!data.success || !data.result.download_url) {
             return await socket.sendMessage(from, { text: "❌ Download Failed. Try again." });
@@ -3014,7 +2983,7 @@ case 'downloaddoc': {
         await socket.sendMessage(from, { react: { text: '⬇️', key: msg.key } });
 
         // Fetch video download link
-        const res = await fetch(`${apibase}/download/ytmp4?apikey=${apikey}&url=${url}`);
+        const res = await fetch(`https://api.srihub.store/download/ytmp4?apikey=dew_hFjyfoUDx5IFFLDMU9ljc3DEaDCCC9niVbWG78KU&url=${url}`);
         const data = await res.json();
         if (!data.success || !data.result.download_url) {
             return await socket.sendMessage(from, { text: "❌ Download Failed. Try again." });
