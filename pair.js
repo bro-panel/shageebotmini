@@ -1394,8 +1394,8 @@ case 'menu': {
                         image: { url: "https://files.catbox.moe/0k6zv8.jpg" },// Changed to MENU image
                         caption: formatMessage(title, content, footer),
                         buttons: [
-                            { buttonId: ${config.PREFIX}amenu, buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ ᴍᴅ ᴅᴏᴡɴʟᴏᴅ 🎛️' }, type: 1 },
-                            { buttonId: ${config.PREFIX}bmenu, buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ ᴍᴅ ᴛᴏᴏʟꜱ ᴍᴇɴᴜ 📄' }, type: 1 }
+                            { buttonId: `${config.PREFIX}amenu`, buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ ᴍᴅ ᴅᴏᴡɴʟᴏᴅ 🎛️' }, type: 1 },
+                            { buttonId: `${config.PREFIX}bmenu`, buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ ᴍᴅ ᴛᴏᴏʟꜱ ᴍᴇɴᴜ 📄' }, type: 1 }
                         ],
                         },  { quoted: myquoted });
 
