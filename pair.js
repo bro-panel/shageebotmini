@@ -1292,216 +1292,309 @@ function setupCommandHandlers(socket, number) {
     
     //========================================
     
-    
-    
-    case 'alive': {
-    try {
-        const startTime = socketCreationTime.get(number) || Date.now();
-        const uptime = Math.floor((Date.now() - startTime) / 1000);
-        const hours = Math.floor(uptime / 3600);
-        const minutes = Math.floor((uptime % 3600) / 60);
-        const seconds = Math.floor(uptime % 60);
+case 'alive': {
+  try {
+    const sanitized = (number || '').replace(/[^0-9]/g, '');
+    const cfg = await loadUserConfigFromMongo(sanitized) || {};
+    const botName = 'SHAGEE MINI❤️‍🩹';
+    const logo = 'https://files.catbox.moe/0k6zv8.jpg';
 
-        const title = 'ᴛʜᴇ ᴘʀɪᴍɪᴜᴍ ᴡʜᴀᴛꜱᴀᴘᴘ ᴍɪɴɪ ʙʏ ꜱʜᴀɢᴇᴇ';
-        const content = 
-           ` *® 𝐏ᴏᴡᴇʀᴅ 𝐁ʏ 𝑆𝐻𝜟Ꮹ𝛯𝛯*\n` +
-            `*𝐁ᴏᴛ 𝐎ᴡɴᴇʀ* :- 𝑆𝐻𝜟Ꮹ𝛯𝛯*\n` +
-            `*𝐎ᴡᴇɴʀ 𝐍ᴜᴍʙᴇʀ* :- +94703403671\n` +
-            `*ᴍɪɴɪ ꜱɪᴛᴇ*\ :- ...../` +
-            `\n\n*Uptime:* ${hours}h ${minutes}m ${seconds}s`;
+    // Meta AI mention
+    const metaQuote = {
+      key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "ꜱʜᴀɢᴇᴇ ᴀɪ ᴀʟɪᴠᴇ 🪄" },
+      message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
+    };
 
-        const footer = config.BOT_FOOTER;
-
-        const buttons = [
-            { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '𝘚ᕼᗩGEE ᗰᗪ ᗰEᑎᑌ 📜' }, type: 1 },
-            { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: 'ᑭIᑎG💥' }, type: 1 }
-        ];
-
-        const buttonMessage = {
-            image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
-            caption: `${title}\n\n${content}`,
-            footer: '> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙',
-            buttons: buttons,
-            headerType: 4
-        };
-
-        await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
-    } catch (err) {
-        console.log('Alive command error:', err);
-        await socket.sendMessage(sender, { text: '❌ Error executing alive command.' });
-    }
-    break;
-}                   
-    
-   
-    
-    
-    
-  
-   
-case 'menu': {
-                    const startTime = socketCreationTime.get(number) || Date.now();
-                    const uptime = Math.floor((Date.now() - startTime) / 1000);
-                    const hours = Math.floor(uptime / 3600);
-                    const minutes = Math.floor((uptime % 3600) / 60);
-                    const seconds = Math.floor(uptime % 60);
-
-                await socket.sendMessage(sender, { 
-        react: { 
-            text: "🇱🇰",
-            key: msg.key 
-        } 
-    });
-
-
-                    const title = '𝐻𝛯𝑌 𝛣𝜟𝛣𝑌.. 👋 I USER 😻🩷\n┏━━━━ ◉◉ 𝛣𝜟𝛣𝑌...━━━━ ◉◉➢\n┣ ✨ Name: 𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼\n┣ 🌐 Type: 𝛭𝐼𝚴𝐼 𝑆𝐼𝑅𝐼び𝑆\n┣ 👨‍💻 Owners: 𝛭𝑅 𝑆𝐻𝜟Ꮹ𝛯𝛯\n┗━⚝';
-                    const content = '𓊈 𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝐶𝛩𝛭𝛭𝜟𝚴𝐷𝑆𓊉\n' +
-
-                   '╭─〔  S T 𝜟 T び S  🥷 〕─╮\n' +
-                   '│ ∘ 𝚴ame     : @𝑆𝐻𝜟Ꮹ𝛯𝛯\n' +
-                   '│ ∘ 𝛲latform : Heroku\n' +
-                   '╰─────────────╯\n\n' +
-
-                   '➤ 𝐀𝐕𝐀𝐼𝐋𝐀𝐁𝐋𝛯 𝐂𝐎𝛭𝐌Ҩ𝚴𝐃𝐒\n' +
-                   '┏━━━━━━ ❍ ━━━━━━┓\n' +
-                   '🛠️ SY𝑆TE𝛭 CO𝛭MA𝚴DS\n' +
-                   '• 🟢 .alive — Show bot status\n' +
-                   '• 🔌 .system — Bot System\n' +
-                   '• 🧪 .ping — Check speed\n' +
-                   '• 🆔 .jid — Get your JID\n\n' +
-
-                   '🖼️ MEDIA TOOLS\n' +
-                   '• 👁‍🗨 .vv — View once unlock\n' +
-                   '• ⭐ .getdp — Downlode Dp\n' +
-                   '• 👀 .cinfo — Get Channel Info\n' +
-                   '• 💾 .save / send — Status saver\n' +
-                   '• 🍭 .yts — Youtube search\n' +
-                   '• 📋 .tiktoksearch — tiktoksearch\n\n' +
-
-                   '📥 DOWNLOADERS\n' +
-                   '• 🎧 .song — Download song\n' +
-                   '• 📂 .csong — Channel Song Send\n' +
-                   '• 🎥 .tiktok — TikTok video\n' +
-                   '• 📸 .facebook  — Video Facebook\n' +
-                   '• 🎬 .video — Video\n\n' + 
-                   '╭───────𓍯───────╮\n' +
-                   '▫️Mini Bot Web 🌐\n' +
-                   '> https//:shageeminis.app/\n' +
-                   '╰───────𓍯───────╯';                                    
-                    const footer = config.BOT_FOOTER;
-
-                    await socket.sendMessage(sender, {
-                        image: { url: "https://files.catbox.moe/0k6zv8.jpg" },// Changed to MENU image
-                        caption: formatMessage(title, content, footer),
-                        buttons: [
-                            { buttonId: `${config.PREFIX}amenu`, buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ ᴍᴅ ᴅᴏᴡɴʟᴏᴅ 🎛️' }, type: 1 },
-                            { buttonId: `${config.PREFIX}bmenu`, buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ ᴍᴅ ᴛᴏᴏʟꜱ ᴍᴇɴᴜ 📄' }, type: 1 }
-                        ],
-                        },  { quoted: myquoted });
-
-                    break;
-                }
-
-                case 'amenu': {
     const startTime = socketCreationTime.get(number) || Date.now();
     const uptime = Math.floor((Date.now() - startTime) / 1000);
     const hours = Math.floor(uptime / 3600);
     const minutes = Math.floor((uptime % 3600) / 60);
     const seconds = Math.floor(uptime % 60);
 
-    await socket.sendMessage(sender, { 
-        react: { 
-            text: "📜",
-            key: msg.key 
-        } 
-    });
-
-    const Podda = `┏━❐  \`ᴅᴏᴡɴʟᴏᴅ ᴍᴇɴᴜ\
-┃ ⭔ ʙᴏᴛ ɴᴀᴍᴇ - ꜱʜᴀɢᴇᴇ ᴍᴅ
-┃ ⭔ ᴘʟᴀᴛꜰʀᴏᴍ - railwey99803.app
-┃ ⭔ ᴜᴘᴛɪᴍᴇ: ${hours}h ${minutes}m ${seconds}s
-┗━❐
-
-╭─═❮ ⚡ ᴍᴀɪɴ ⚡ ❯═━───❖
-│ 🟢 .ꜰʙ →  
-┣ ꜰʙ ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴅ  
-│ 📶 .ᴛɪᴋᴛᴏᴋ →  
-┣ ᴅᴏᴡɴʟᴏᴅ ᴛɪᴋᴛᴏᴋꜱ  
-│ ⚙️ .ᴘʜ →  
-┣ ᴅᴏᴡɴʟᴏᴅ ꜱ#x ᴠɪᴅᴇᴏꜱ   
-│ 👑 .ꜱᴏɴɢ→  
-┣ ᴅᴏᴡɴʟᴏᴅ ꜱᴏɴɢꜱ   
-╰━━━━━━━━━━━━━━━━━━━❖`;
+    const text = `
+♠️ \`SᕼᗩGEE ᗰᗪ ᗩᒪIᐯE ᑎOᗯ..!\`
+♠️ \`Owner: SᕼᗩGEE\`
+♠️ \`ᑌptime: ${hours}h ${minutes}m{seconds}s\`
+♠️ \`ᑭlatform: ${process.env.PLATFORM || 'Heroku'}\`
+♠️ \`ᑭrefix: ${config.PREFIX}\`
+`;
 
     const buttons = [
-        { buttonId: '.alive', buttonText: { displayText: '➿ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴍᴇɴᴜ' }, type: 1 },
-        { buttonId: '.ping', buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ xᴍᴅ ᴘɪɴɢ 💥' }, type: 1 }
+      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📋 ᗰEᑎᑌ" }, type: 1 },
+      { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "⚡ ᑭIᑎG" }, type: 1 }
     ];
 
-    const buttonMessage = {
-        image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
-        caption: Podda,
-        footer: "> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙",
-        buttons: buttons,
-        headerType: 4,
-        contextInfo: fakeForward
-    };
+    let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
 
-    await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
-    break;
-}                        
-case 'bmenu': {
-    const startTime = socketCreationTime.get(number) || Date.now();
-    const uptime = Math.floor((Date.now() - startTime) / 1000);
-    const hours = Math.floor(uptime / 3600);
-    const minutes = Math.floor((uptime % 3600) / 60);
-    const seconds = Math.floor(uptime % 60);
+    await socket.sendMessage(sender, {
+      image: imagePayload,
+      caption: text,
+      footer: `🔥 ᗷᗩᗷY Iᗰ ᗩLIVE 🔥`,
+      buttons,
+      headerType: 4
+    }, { quoted: metaQuote });
 
-    // React to the message
-    await socket.sendMessage(sender, { 
-        react: { 
-            text: "📥",
-            key: msg.key 
-        } 
-    });
-
-    const Podda = `┏━❐  \`ᴛᴏᴏʟꜱ ᴍᴇɴᴜ\
-┃ ⭔ ʙᴏᴛ ɴᴀᴍᴇ - ꜱʜᴀɢᴇᴇ ᴍɪɴɪ
-┃ ⭔ ᴘʟᴀᴛꜰʀᴏᴍ - Heroku
-┃ ⭔ ᴜᴘᴛɪᴍᴇ: ${hours}h ${minutes}m ${seconds}s
-┗━❐
-
-╭─═❮ 🪄ᴛᴏᴏʟꜱ ᴍᴇɴᴜ ❯═━───❖
-│ 🥂 .ᴘɪɴɢ→  
-┣ ꜱᴘᴇᴇᴅ ᴛᴇꜱᴛ ᴍʏ ʙᴏᴛ
-│ 📘 .ᴊɪᴅ→  
-┣ ᴊɪᴅ ꜱʜᴀʀᴄʜ  
-│ 🎶 .ᴛꜱ <ɴᴀᴍᴇ> →  
-┣ ᴛɪᴋᴛᴏᴋ ꜱᴇᴀʀᴄʜ  
-│ 💣 .ʟᴏɢᴏ→  
-┣ ᴍᴀᴋᴇ ʟᴏɢᴏꜱ  
-│ 📲 .ᴏᴡɴᴇʀ →  
-┣ ᴍʏ ᴏᴡɴᴇʀ
-╰━━━━━━━━━━━━━━━━━━━❖`;
-
-    // Buttons setup
-    const buttons = [
-        { buttonId: '.menu', buttonText: { displayText: ' ➿ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴍᴇɴᴜ' }, type: 1 },
-        { buttonId: '.ping', buttonText: { displayText: 'ꜱʜᴀɢᴇᴇ xᴍᴅ ᴘɪɴɢ 💥' }, type: 1 }
-    ];
-
-    const buttonMessage = {
-        image: { url: "https://files.catbox.moe/0k6zv8.jpg" },
-        caption: Podda,
-        footer: '> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙',
-        buttons: buttons,
-        headerType: 4, // 4 = image with buttons
-        contextInfo: fakeForward
-    };
-
-    await socket.sendMessage(sender, buttonMessage, { quoted: myquoted });
-    break;
+  } catch(e) {
+    console.error('alive error', e);
+    await socket.sendMessage(sender, { text: '❌ Failed to send alive status.' }, { quoted: msg });
+  }
+  break;
 }
+
+// ---------------------- PING -----------------
+
+
+
+
+
+
+case 'menu': {
+  try { await socket.sendMessage(sender, { react: { text: "📋", key: msg.key } }); } catch(e){}
+
+  try {
+    const startTime = socketCreationTime.get(number) || Date.now();
+    const uptime = Math.floor((Date.now() - startTime) / 1000);
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
+
+    // load per-session config (logo, botName)
+    let userCfg = {};
+    try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; }
+    catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
+
+    const title = userCfg.botName || '𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐷 𝛭𝐼𝚴𝐼 𝛣𝛩亇 🥂';
+
+    // 🔹 Fake contact for Meta AI mention
+    const shonux = {
+        key: {
+            remoteJid: "status@broadcast",
+            participant: "0@s.whatsapp.net",
+            fromMe: false,
+            id: "META_AI_FAKE_ID_MENU"
+        },
+        message: {
+            contactMessage: {
+                displayName: title,
+                vcard: `BEGIN:VCARD
+VERSION:3.0
+N:${title};;;;
+FN:${title}
+ORG:Meta Platforms
+TEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002
+END:VCARD`
+            }
+        }
+    };
+
+    const text = `
+╭───❏ *BOT STATUS* ❏
+│ ♠️ *𝗕ot Name*: ${title}
+│ ♠️ *𝗢wner*: ${config.OWNER_NAME || '𝐷𝐼𝚴びꪝ𝜟𝐻'}
+│ ♠️ *𝗩ersion*: ${config.BOT_VERSION || '0.0.1'}
+│ ♠️ *𝗣latform*: ${process.env.PLATFORM || 'Heroku'}
+│ ♠️ *𝗨ptime*: ${hours}h ${minutes}m ${seconds}s
+╰───────────────❏
+
+➤ 𝐀𝐕𝐀𝐼𝐋𝐀𝐁𝐋𝛯 𝐂𝐎𝛭𝐌Ҩ𝚴𝐃𝐒
+┏━━━━━━ ❍ ━━━━━━┓
+🛠️ *SY𝑆TE𝛭 CO𝛭MA𝚴DS*
+• 🟢 \`.alive\` — Show bot status
+• 🔌 \`.system\` — Bot System
+• 🧪 \`.ping\` — Check speed
+• 🆔 \`.jid\` — Get your JID
+
+🖼️ *MEDIA TOOLS*
+• 👁‍🗨 \`.vv\` — View once unlock
+• ⭐ \`.getdp\` — Downlode Dp
+• 👀 \`.cinfo\` — Get Channel Info
+• 💾 \`.save / send\` — Status saver
+• 🍭 \`.yts\` — Youtube search
+• 📋 \`.tiktoksearch\` — tiktoksearch
+
+📥 *DOWNLOADERS*
+• 🎧 \`.song\` — Download song
+• 📂 \`.csend\` — Channel Song Send
+• 🎥 \`.tiktok\` — TikTok video
+• 📸 \`.facebook\`  — Video Facebook
+• 🎬 \`.video\` — Video
+> © ${config.BOT_FOOTER || '> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙'}
+`.trim();
+
+    const buttons = [
+      { buttonId: `${config.PREFIX}download`, buttonText: { displayText: "📥 ᗪOᗯᑎᒪOᗪ ᗰEᑎᑌ" }, type: 1 },
+      { buttonId: `${config.PREFIX}tools`, buttonText: { displayText: "🎨 TOOᒪ ᗰEᑎᑌ" }, type: 1 },
+      { buttonId: `${config.PREFIX}settings`, buttonText: { displayText: "🪄 SETTIᑎG" }, type: 1 }
+    ];
+	
+    const defaultImg = 'https://files.catbox.moe/0k6zv8.jpg';
+    const useLogo = userCfg.logo || defaultImg;
+
+
+   // build image payload (url or buffer)
+    let imagePayload;
+    if (String(useLogo).startsWith('http')) imagePayload = { url: useLogo };
+    else {
+      try { imagePayload = fs.readFileSync(useLogo); } catch(e){ imagePayload = { url: defaultImg }; }
+    }
+
+    await socket.sendMessage(sender, {
+      image: imagePayload,
+      caption: text,
+      footer: "> ⛩️̶͟͞🔥⃝𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐼𝚴𝐼 𝛣𝛩亇🕊️̶͟͞🌙",
+      buttons,
+      headerType: 4
+    }, { quoted: shonux });
+
+  } catch (err) {
+    console.error('menu command error:', err);
+    try { await socket.sendMessage(sender, { text: '❌ Failed to show menu.' }, { quoted: msg }); } catch(e){}
+  }
+  break;
+}
+
+// ==================== DOWNLOAD MENU ====================
+case 'download': {
+  try { await socket.sendMessage(sender, { react: { text: "📥", key: msg.key } }); } catch(e){}
+
+  try {
+    let userCfg = {};
+    try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
+    const title = userCfg.botName || '𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐷 𝛭𝐼𝚴𝐼 𝛣𝛩亇';
+
+    const shonux = {
+        key: {
+            remoteJid: "status@broadcast",
+            participant: "0@s.whatsapp.net",
+            fromMe: false,
+            id: "META_AI_FAKE_ID_DOWNLOAD"
+        },
+        message: {
+            contactMessage: {
+                displayName: title,
+                vcard: `BEGIN:VCARD
+VERSION:3.0
+N:${title};;;;
+FN:${title}
+ORG:Meta Platforms
+TEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002
+END:VCARD`
+            }
+        }
+    };
+
+    const text = `
+╭───❍ *DOWNLOAD MENU* ❍
+│ 
+│ 🎵 *Music Downloaders*
+│ ${config.PREFIX}song [query]
+│ ${config.PREFIX}csong [jid] [query]
+│ ${config.PREFIX}ringtone [name]
+│ 
+│ 🎬 *Video Downloaders*
+│ ${config.PREFIX}tiktok [url]
+│ ${config.PREFIX}video [query]
+│ ${config.PREFIX}xvideo [query]
+│ ${config.PREFIX}xnxx [query]
+│ ${config.PREFIX}fb [url]
+│ ${config.PREFIX}ig [url]
+│ 
+│ 📱 *App & Files*
+│ ${config.PREFIX}apk [app id]
+│ ${config.PREFIX}apksearch [app name]
+│ ${config.PREFIX}mediafire [url]
+│ ${config.PREFIX}gdrive [url]
+│ 
+╰───────────────❏
+`.trim();
+
+    const buttons = [
+      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "🔙 MAIN MENU" }, type: 1 },
+      { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "🪄PING" }, type: 1 }
+    ];
+
+    await socket.sendMessage(sender, {
+      text,
+      footer: "📥 DOWNLOAD COMMANDS",
+      buttons
+    }, { quoted: shonux });
+
+  } catch (err) {
+    console.error('download command error:', err);
+    try { await socket.sendMessage(sender, { text: '❌ Failed to show download menu.' }, { quoted: msg }); } catch(e){}
+  }
+  break;
+}
+
+// ==================== CREATIVE MENU ====================
+case 'tools': {
+  try { await socket.sendMessage(sender, { react: { text: "🎨", key: msg.key } }); } catch(e){}
+
+  try {
+    let userCfg = {};
+    try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
+    const title = userCfg.botName || '𝑆𝐻𝜟Ꮹ𝛯𝛯 𝛭𝐷';
+
+    const shonux = {
+        key: {
+            remoteJid: "status@broadcast",
+            participant: "0@s.whatsapp.net",
+            fromMe: false,
+            id: "META_AI_FAKE_ID_CREATIVE"
+        },
+        message: {
+            contactMessage: {
+                displayName: title,
+                vcard: `BEGIN:VCARD
+VERSION:3.0
+N:${title};;;;
+FN:${title}
+ORG:Meta Platforms
+TEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002
+END:VCARD`
+            }
+        }
+    };
+
+    const text = `
+╭───❏ *CREATIVE MENU* ❏
+│ 
+│ 🤖 *AI Features*
+│ ${config.PREFIX}ai [message]
+│ ${config.PREFIX}aiimg [prompt]
+│ ${config.PREFIX}aiimg2 [prompt]
+│ 
+│ ✍️ *Text Tools*
+│ ${config.PREFIX}font [text]
+│ 
+│ 🖼️ *Image Tools*
+│ ${config.PREFIX}getdp [number]
+│ 
+│ 💾 *Media Saver*
+│ ${config.PREFIX}save (reply to status)
+│ 
+╰───────────────❏
+`.trim();
+
+    const buttons = [
+      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "🔙 MAIN MENU" }, type: 1 },
+      { buttonId: `${config.PREFIX}download`, buttonText: { displayText: "📥 DOWNLOAD" }, type: 1 }
+    ];
+
+    await socket.sendMessage(sender, {
+      text,
+      footer: "TOOL COMMANDS",
+      buttons
+    }, { quoted: shonux });
+
+  } catch (err) {
+    console.error('creative command error:', err);
+    try { await socket.sendMessage(sender, { text: '❌ Failed to show creative menu.' }, { quoted: msg }); } catch(e){}
+  }
+  break;
+}
+
+    
    //==================     
     
    
