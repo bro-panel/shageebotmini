@@ -1416,7 +1416,7 @@ case 'menu': {
         } 
     });
 
-    const Podda = ┏━❐  \`ᴅᴏᴡɴʟᴏᴅ ᴍᴇɴᴜ\
+    const Podda = `┏━❐  \`ᴅᴏᴡɴʟᴏᴅ ᴍᴇɴᴜ\
 ┃ ⭔ ʙᴏᴛ ɴᴀᴍᴇ - ꜱʜᴀɢᴇᴇ ᴍᴅ
 ┃ ⭔ ᴘʟᴀᴛꜰʀᴏᴍ - railwey99803.app
 ┃ ⭔ ᴜᴘᴛɪᴍᴇ: ${hours}h ${minutes}m ${seconds}s
@@ -1465,7 +1465,7 @@ case 'bmenu': {
         } 
     });
 
-    const Podda = ┏━❐  \`ᴛᴏᴏʟꜱ ᴍᴇɴᴜ\
+    const Podda = `┏━❐  \`ᴛᴏᴏʟꜱ ᴍᴇɴᴜ\
 ┃ ⭔ ʙᴏᴛ ɴᴀᴍᴇ - ꜱʜᴀɢᴇᴇ ᴍɪɴɪ
 ┃ ⭔ ᴘʟᴀᴛꜰʀᴏᴍ - Heroku
 ┃ ⭔ ᴜᴘᴛɪᴍᴇ: ${hours}h ${minutes}m ${seconds}s
